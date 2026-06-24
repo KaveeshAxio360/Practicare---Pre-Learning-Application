@@ -1,16 +1,37 @@
 import { Image } from "expo-image";
+import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Alert,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 const WelcomeScreen = () => {
+  const router = useRouter();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const handleLogin = () => {
-    console.log("Email and Password", email, password);
-    alert(`Logging in with email: ${email}`);
+    const hasCredentials =
+      email.trim().length > 0 || password.trim().length > 0;
+
+    if (!hasCredentials) {
+      Alert.alert(
+        "Missing details",
+        "Enter your email or password to continue.",
+      );
+      return;
+    }
+
+    Alert.alert("Login successful", "You have been signed in.");
     clearForm();
+    // router.replace("/dashboard");
+    router.push("/dashboard");
   };
 
   const clearForm = () => {
