@@ -1,4 +1,5 @@
 import { Host, RadioButton } from "@expo/ui/jetpack-compose";
+import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import Slider from "@react-native-community/slider";
 import { Picker } from "@react-native-picker/picker";
@@ -35,6 +36,7 @@ export default function DashboardScreen() {
   const [selectedAge, setSelectedAge] = React.useState(25);
   const [startDate, setStartDate] = React.useState<any>(null);
   const [endDate, setEndDate] = React.useState<any>(null);
+  const [range, setRange] = React.useState([5, 20]);
 
   const satisfactionOptions = [
     { label: "Yes", value: "yes" },
@@ -212,6 +214,26 @@ export default function DashboardScreen() {
               <Text style={styles.dateValue}>{selectedPriceRange}</Text>
             </View>
           </View>
+
+          <View>
+            <Text style={styles.sectionTitle}>Multi Slider</Text>
+            <View style={styles.sliderRow}>
+              <Text style={styles.helperText}>Price Range </Text>
+              <MultiSlider
+                values={range}
+                min={1}
+                max={100}
+                step={1}
+                onValuesChange={(values) => setRange(values)}
+                sliderLength={300}
+                selectedStyle={{ backgroundColor: "#31ddc4" }}
+                unselectedStyle={{ backgroundColor: "#ffffff" }}
+                markerStyle={{ backgroundColor: "#31ddc4" }}
+              />
+              <Text style={styles.dateValue}>{range.join(" - ")}</Text>
+            </View>
+          </View>
+
           <View>
             <Text style={styles.sectionTitle}>Number</Text>
             <View style={styles.sliderRow}>
