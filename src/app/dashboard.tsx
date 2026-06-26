@@ -7,6 +7,7 @@ import Checkbox from "expo-checkbox";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import {
+  Button,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -16,11 +17,23 @@ import {
   View,
 } from "react-native";
 import { Calendar } from "react-native-calendars";
+
+import * as DocumentPicker from "expo-document-picker";
+import { useRouter } from "expo-router";
+import {
+  CodeField,
+  Cursor,
+  useBlurOnFulfill,
+  useClearByFocusCell,
+} from "react-native-confirmation-code-field";
 import CountryPicker from "react-native-country-picker-modal";
 import { Dropdown, MultiSelect } from "react-native-element-dropdown";
+import InputSpinner from "react-native-input-spinner";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function DashboardScreen() {
+  const router = useRouter();
+
   const [fullName, setFullName] = React.useState("");
   const [selectedDesignation, setSelectedDesignation] = React.useState("");
   const [selectedSatisfaction, setSelectedSatisfaction] = React.useState("yes");
@@ -37,6 +50,14 @@ export default function DashboardScreen() {
   const [startDate, setStartDate] = React.useState<any>(null);
   const [endDate, setEndDate] = React.useState<any>(null);
   const [range, setRange] = React.useState([5, 20]);
+  const [guests, setGuests] = React.useState(1);
+
+  //OTP Implementation
+  const CELL_COUNT = 6;
+  const [otp, setOtp] = React.useState("");
+
+  //Document Picker Implementation
+  const [fileName, setFileName] = React.useState("");
 
   const satisfactionOptions = [
     { label: "Yes", value: "yes" },
@@ -114,12 +135,47 @@ export default function DashboardScreen() {
     }
   };
 
+  //OTP Implementation
+  const ref = useBlurOnFulfill({
+    value: otp,
+    cellCount: CELL_COUNT,
+  });
+
+  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+    value: otp,
+    setValue: setOtp,
+  });
+
+  //Document Picker Implementation
+  const pickDocument = async () => {
+    const result = await DocumentPicker.getDocumentAsync({
+      type: ["image/*", "application/pdf"],
+    });
+
+    if (!result.canceled) {
+      setFileName(result.assets[0].name);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
       <SafeAreaView style={styles.safeArea}>
         <ScrollView>
-          <Text style={styles.headerText}>Basic Input Types</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: 10,
+            }}
+          >
+            <Text style={styles.headerText}>Basic Input Types</Text>
+            <Button
+              title="News Screen"
+              onPress={() => router.push("/NewsScreen")}
+            />
+          </View>
 
           <View>
             <Text style={styles.sectionTitle}>Text Input</Text>
@@ -231,6 +287,66 @@ export default function DashboardScreen() {
                 markerStyle={{ backgroundColor: "#31ddc4" }}
               />
               <Text style={styles.dateValue}>{range.join(" - ")}</Text>
+            </View>
+          </View>
+
+          <View>
+            <Text style={styles.sectionTitle}>Input Spinner</Text>
+            <View style={styles.sliderRow}>
+              <Text style={styles.helperText}>Guest Count </Text>
+              <InputSpinner
+                max={10}
+                min={1}
+                step={1}
+                value={guests}
+                onChange={(value) => setGuests(Number(value))}
+                skin="modern"
+              />
+              <Text style={styles.dateValue}>{guests}</Text>
+            </View>
+          </View>
+
+          <View>
+            <Text style={styles.sectionTitle}>Document/Image Picker</Text>
+            <View style={styles.sliderRow}>
+              <Button title="Pick a Document" onPress={pickDocument} />
+              <Text style={styles.dateValue}>
+                {fileName || "No file selected"}
+              </Text>
+            </View>
+          </View>
+
+          <View>
+            <Text style={styles.sectionTitle}>OTP Code</Text>
+            <View style={styles.sliderRow}>
+              <CodeField
+                ref={ref}
+                {...props}
+                value={otp}
+                onChangeText={setOtp}
+                cellCount={CELL_COUNT}
+                keyboardType="number-pad"
+                renderCell={({ index, symbol, isFocused }) => (
+                  <View
+                    key={index}
+                    onLayout={getCellOnLayoutHandler(index)}
+                    style={{
+                      width: 45,
+                      height: 50,
+                      borderWidth: 1,
+                      borderColor: isFocused ? "blue" : "#ccc",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      borderRadius: 8,
+                      marginHorizontal: 4,
+                    }}
+                  >
+                    <Text style={{ fontSize: 18, color: "#ffffff" }}>
+                      {symbol || (isFocused ? <Cursor /> : null)}
+                    </Text>
+                  </View>
+                )}
+              />
             </View>
           </View>
 
