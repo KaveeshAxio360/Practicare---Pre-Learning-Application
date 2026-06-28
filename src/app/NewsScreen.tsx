@@ -1,36 +1,10 @@
 import NewsSummaryComponent from "@/components/NewsSummaryComponent";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-const summaryNewsItems = [
-  {
-    id: "1",
-    title: "New Pathology Referral Pathway - Effective",
-    summary:
-      "Following feedback from our pathology partner, all referrals should now use the updated electronic form. Paper referrals will no longer be",
-    date: "Jun 21, 2026 at 9:14 AM",
-    featured: true,
-  },
-  {
-    id: "2",
-    title: "Cold & Flu Season Preparation - Stock Check Required",
-    summary:
-      "Pharmacy leads are requested to complete a full stock audit before 25 June to ensure adequate supplies for the upcoming cold and flu season",
-    date: "Jun 19, 2026 at 2:45 PM",
-    featured: false,
-  },
-  {
-    id: "3",
-    title: "Practicare Platform Update: Version 4.2 Released",
-    summary:
-      "The latest update includes improvements to the Noticeboards feature, faster task completion workflows, and a redesigned compliance alerts",
-    date: "Jun 18, 2026 at 11:02 AM",
-    featured: false,
-  },
-];
+import { demoNews } from "../storage/demoNews";
+import { Colors } from "../storage/colorCodes";
 
 const NewsScreen = () => {
   const router = useRouter();
@@ -49,9 +23,20 @@ const NewsScreen = () => {
               </Pressable>
             </View>
 
-            {summaryNewsItems.map((item) => (
-              <NewsSummaryComponent item={item} key={item.id} />
-            ))}
+            {demoNews
+              .filter((item) => {
+                const newsDate = new Date(item.date);
+                const today = new Date();
+
+                return (
+                  newsDate.getDate() === today.getDate() &&
+                  newsDate.getMonth() === today.getMonth() &&
+                  newsDate.getFullYear() === today.getFullYear()
+                );
+              })
+              .map((item) => (
+                <NewsSummaryComponent key={item.id} item={item} />
+              ))}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -62,7 +47,7 @@ const NewsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#eef2f3",
+    backgroundColor: Colors.background,
     paddingHorizontal: 10,
     paddingTop: 8,
   },
@@ -72,9 +57,9 @@ const styles = StyleSheet.create({
   newsCard: {
     borderRadius: 14,
     overflow: "hidden",
-    backgroundColor: "#ffffff",
+    backgroundColor: Colors.white,
     borderWidth: 1,
-    borderColor: "#d9e3e5",
+    borderColor: Colors.secondary,
     marginTop: 20,
   },
   headerRow: {
@@ -84,17 +69,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     borderBottomWidth: 1,
-    borderBottomColor: "#e3ebed",
+    borderBottomColor: Colors.secondary,
   },
 
   headerTitle: {
-    color: "#101314",
+    color: Colors.textDark,
     fontSize: 15,
     fontWeight: "800",
     letterSpacing: 1,
   },
   viewAll: {
-    color: "#1f958c",
+    color: Colors.primary,
     fontSize: 14,
     fontWeight: "700",
   },
@@ -104,7 +89,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 14,
     borderBottomWidth: 1,
-    borderBottomColor: "#e3ebed",
+    borderBottomColor: Colors.secondary,
   },
   iconBadge: {
     width: 48,
@@ -115,29 +100,29 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   iconBadgeFeatured: {
-    backgroundColor: "#1f958c",
+    backgroundColor: Colors.primary,
   },
   iconBadgeMuted: {
-    backgroundColor: "#e3ebed",
+    backgroundColor: Colors.secondary,
   },
   newsTextBlock: {
     flex: 1,
     gap: 3,
   },
   newsTitle: {
-    color: "#111618",
+    color: Colors.textDark,
     fontSize: 17,
     fontWeight: "800",
     lineHeight: 23,
   },
   newsSummary: {
-    color: "#768386",
+    color: Colors.textLight,
     fontSize: 13,
     lineHeight: 19,
     fontWeight: "500",
   },
   newsDate: {
-    color: "#15998f",
+    color: Colors.primary,
     fontSize: 12,
     lineHeight: 16,
     fontWeight: "700",

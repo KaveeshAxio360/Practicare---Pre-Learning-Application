@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import { Colors } from "../storage/colorCodes";
 
 interface NewsAndMemoComponentProps {
   item: {
@@ -11,6 +12,7 @@ interface NewsAndMemoComponentProps {
     priority: string;
     category: string;
     by: string;
+    detailedSummary: string;
   };
 }
 
@@ -22,15 +24,15 @@ const NewsAndMemoComponent = ({ item }: NewsAndMemoComponentProps) => {
         styles.newsItem,
         {
           backgroundColor:
-            item.priority === "Mandatory" ? "#fcf5f2" : "#ffffff",
+            item.priority === "Mandatory" ? Colors.MandatoryBG : Colors.white,
         },
         {
           borderColor:
             item.priority === "Mandatory"
-              ? "#ff4d4f"
+              ? Colors.danger
               : item.priority === "High"
-                ? "#faad14"
-                : "#15998f",
+                ? Colors.warning
+                : Colors.primary,
         },
       ]}
     >
@@ -42,7 +44,9 @@ const NewsAndMemoComponent = ({ item }: NewsAndMemoComponentProps) => {
               styles.label,
               {
                 backgroundColor:
-                  item.type === "Practise Memo" ? "#1f958c" : "#e3ebed",
+                  item.type === "Practise Memo"
+                    ? Colors.primary
+                    : Colors.secondary,
               },
             ]}
           >
@@ -54,10 +58,10 @@ const NewsAndMemoComponent = ({ item }: NewsAndMemoComponentProps) => {
               {
                 backgroundColor:
                   item.priority === "Mandatory"
-                    ? "#ff4d4f"
+                    ? Colors.danger
                     : item.priority === "High"
-                      ? "#faad14"
-                      : "#e3ebed",
+                      ? Colors.warning
+                      : Colors.secondary,
               },
             ]}
           >
@@ -65,10 +69,12 @@ const NewsAndMemoComponent = ({ item }: NewsAndMemoComponentProps) => {
           </Text>
           <Text style={styles.label}>{item.category}</Text>
         </View>
-        <Text style={styles.newsSummary}>{item.summary}</Text>
+        <Text style={styles.newsSummary}>{item.detailedSummary}</Text>
         <View style={styles.newsDateAndByContainer}>
           <Text style={styles.publisher}>By: {item.by}</Text>
-          <Text style={styles.newsDate}>{item.date}</Text>
+          <Text style={styles.newsDate}>
+            {new Date(item.date).toLocaleDateString()}
+          </Text>
         </View>
       </View>
     </View>
@@ -90,7 +96,7 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   newsTitle: {
-    color: "#111618",
+    color: Colors.textDark,
     fontSize: 17,
     fontWeight: "800",
     lineHeight: 23,
@@ -105,17 +111,17 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 10,
     paddingVertical: 2,
-    backgroundColor: "#e3ebed",
+    backgroundColor: Colors.secondary,
   },
   newsSummary: {
-    color: "#768386",
+    color: Colors.textLight,
     fontSize: 15,
     lineHeight: 20,
     fontWeight: "500",
     marginVertical: 10,
     paddingBottom: 15,
     borderBottomWidth: 1,
-    borderBottomColor: "#d6dadb",
+    borderBottomColor: Colors.secondary,
   },
   newsDateAndByContainer: {
     flexDirection: "row",
@@ -124,14 +130,14 @@ const styles = StyleSheet.create({
     gap: 30,
   },
   publisher: {
-    color: "#15998f",
+    color: Colors.primary,
     fontSize: 12,
     fontWeight: "700",
     lineHeight: 16,
     marginTop: 4,
   },
   newsDate: {
-    color: "#15998f",
+    color: Colors.primary,
     fontSize: 12,
     lineHeight: 16,
     fontWeight: "700",

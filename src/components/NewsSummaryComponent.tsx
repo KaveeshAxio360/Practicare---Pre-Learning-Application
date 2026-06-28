@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Colors } from "../storage/colorCodes";
 
 interface NewsSummaryComponentProps {
   item: {
@@ -7,25 +9,42 @@ interface NewsSummaryComponentProps {
     summary: string;
     date: string;
     featured: boolean;
+    type: string;
+    priority: string;
+    category: string;
+    by: string;
+    detailedSummary: string;
   };
 }
 
 const NewsSummaryComponent = ({ item }: NewsSummaryComponentProps) => {
+  const router = useRouter();
   return (
-    <View key={item.id} style={styles.newsItem}>
-      <View
-        style={[
-          styles.iconBadge,
-          item.featured ? styles.iconBadgeFeatured : styles.iconBadgeMuted,
-        ]}
-      ></View>
+    <Pressable
+      onPress={() =>
+        router.push({
+          pathname: "/news/[id]",
+          params: { id: item.id },
+        })
+      }
+    >
+      <View key={item.id} style={styles.newsItem}>
+        <View
+          style={[
+            styles.iconBadge,
+            item.featured ? styles.iconBadgeFeatured : styles.iconBadgeMuted,
+          ]}
+        ></View>
 
-      <View style={styles.newsTextBlock}>
-        <Text style={styles.newsTitle}>{item.title}</Text>
-        <Text style={styles.newsSummary}>{item.summary}</Text>
-        <Text style={styles.newsDate}>{item.date}</Text>
+        <View style={styles.newsTextBlock}>
+          <Text style={styles.newsTitle}>{item.title}</Text>
+          <Text style={styles.newsSummary}>{item.summary}</Text>
+          <Text style={styles.newsDate}>
+            {new Date(item.date).toLocaleDateString()}
+          </Text>
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
@@ -36,7 +55,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 14,
     borderBottomWidth: 1,
-    borderBottomColor: "#e3ebed",
+    borderBottomColor: Colors.secondary,
   },
   iconBadge: {
     width: 48,
@@ -47,29 +66,29 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   iconBadgeFeatured: {
-    backgroundColor: "#1f958c",
+    backgroundColor: Colors.primary,
   },
   iconBadgeMuted: {
-    backgroundColor: "#e3ebed",
+    backgroundColor: Colors.secondary,
   },
   newsTextBlock: {
     flex: 1,
     gap: 3,
   },
   newsTitle: {
-    color: "#111618",
+    color: Colors.textDark,
     fontSize: 17,
     fontWeight: "800",
     lineHeight: 23,
   },
   newsSummary: {
-    color: "#768386",
+    color: Colors.textLight,
     fontSize: 13,
     lineHeight: 19,
     fontWeight: "500",
   },
   newsDate: {
-    color: "#15998f",
+    color: Colors.primary,
     fontSize: 12,
     lineHeight: 16,
     fontWeight: "700",

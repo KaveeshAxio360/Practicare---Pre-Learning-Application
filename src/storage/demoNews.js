@@ -1,0 +1,63 @@
+export const demoNews = [
+  {
+    id: "1",
+    title: "New Pathology Referral Pathway - Effective",
+    summary:
+      "Following feedback from our pathology partner, all referrals should now use the updated electronic form. Paper referrals will no longer be",
+    date: "2026-06-28T09:14:00",
+    featured: true,
+    type: "Practise Memo",
+    priority: "Mandatory",
+    category: "General",
+    by: "Clinical Lead",
+    detailedSummary: `
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus, felis vitae placerat ultricies, arcu sapien tristique diam, sed pharetra tortor libero eget sapien. Sed tincidunt lectus a lectus venenatis, nec molestie ex placerat. Fusce mauris dui, cursus ut diam nec, laoreet gravida mauris. Praesent risus velit, fringilla sit amet fringilla et, ultricies nec mi. Vestibulum quis pharetra ex. Mauris auctor sed dolor ac egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris accumsan velit nisi. Nulla molestie venenatis orci nec aliquet.
+
+Curabitur mattis tortor id metus vulputate, a elementum diam sollicitudin. Nunc euismod non ante sed lacinia. Donec in diam ac risus pellentesque volutpat id vel leo. Nunc risus orci, elementum nec malesuada nec, sodales et mauris. Duis quis arcu urna. Integer in tellus facilisis, feugiat lacus eget, elementum libero. Pellentesque consequat magna non nunc condimentum consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+
+Suspendisse ac turpis molestie justo venenatis ultrices. Curabitur ultricies sapien sit amet felis lacinia, venenatis convallis magna sagittis. Praesent a metus odio. Nullam nisi enim, ornare a porta eget, commodo dignissim orci. Maecenas ultrices dui sit amet libero tristique laoreet non sit amet ligula. Phasellus cursus efficitur nisl ut pellentesque. Nullam ac imperdiet ligula, eu consectetur orci. Ut purus felis, euismod pretium dui eget, cursus blandit quam. Maecenas volutpat ullamcorper ante. In commodo mi lectus, eget mattis dui placerat quis. Curabitur elementum velit a pulvinar laoreet. Integer mollis viverra tristique. Fusce dapibus vitae felis eu venenatis. Cras tristique sed dui id commodo.`,
+  },
+  {
+    id: "2",
+    title: "Cold & Flu Season Preparation - Stock Check Required",
+    summary:
+      "Pharmacy leads are requested to complete a full stock audit before 25 June to ensure adequate supplies for the upcoming cold and flu season",
+    date: "2026-06-28T14:45:00",
+    featured: false,
+    type: "Practice News",
+    priority: "High",
+    category: "Clinical",
+    by: "Pharmacy Lead",
+    detailedSummary: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ex rem, est optio qui beatae praesentium voluptate! Libero dicta cum aut sit voluptate expedita eius iure illo assumenda, doloremque sapiente.
+      Molestias quis iste minus voluptates repudiandae rerum, maiores iusto, hic modi esse molestiae doloremque mollitia nemo reiciendis tempore voluptatum. Officiis dolore optio, voluptatem quibusdam possimus eos maiores incidunt expedita maxime.
+      Sunt enim voluptatem rem ducimus deleniti at fugiat nulla tempore incidunt in similique, ea ad maxime ex quas vitae dignissimos fuga quo nostrum quis dolore possimus autem. Veritatis, quo beatae!`,
+  },
+  {
+    id: "3",
+    title: "Practicare Platform Update: Version 4.2 Released",
+    summary:
+      "The latest update includes improvements to the Noticeboards feature, faster task completion workflows, and a redesigned compliance alerts",
+    date: "2026-06-28T11:02:00",
+    featured: false,
+    type: "Practice News",
+    priority: "Normal",
+    category: "Administrative",
+    by: "Product Team",
+    detailedSummary: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, voluptatibus repudiandae officia id atque deleniti ratione unde quae fuga, maxime esse dolor at corrupti. Cumque, alias. Magnam cumque modi recusandae?
+      Deleniti blanditiis ullam tempora optio amet incidunt sed natus, hic, perspiciatis error veritatis voluptates voluptas doloribus. Rem facilis explicabo rerum id asperiores? Provident fuga eum similique et alias! Magnam, velit?
+      Neque quod temporibus, reiciendis veritatis itaque maxime accusantium, asperiores pariatur enim porro animi nam modi! Enim fugiat harum dolore quisquam, libero asperiores nemo ipsum rerum aperiam, rem doloribus cum consequatur.`,
+  },
+  {
+    id: "4",
+    title: "New Clinical Guidelines for Hypertension Management",
+    summary:
+      "A comprehensive update to the clinical guidelines for the management of hypertension, incorporating the latest research and best practices.",
+    date: "2026-06-25T10:30:00",
+    featured: true,
+    type: "Clinical Update",
+    priority: "High",
+    category: "Clinical",
+    by: "Medical Director",
+    detailedSummary: `The new guidelines emphasize the importance of individualized treatment plans, lifestyle modifications, and the use of evidence-based pharmacological interventions. Key recommendations include regular blood pressure monitoring, patient education on lifestyle changes, and the integration of multidisciplinary care teams to optimize patient outcomes. Clinicians are encouraged to review the full guidelines and implement the recommended practices in their clinical settings.`,
+  },
+];
