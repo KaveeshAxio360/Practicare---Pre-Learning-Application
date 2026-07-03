@@ -1,10 +1,17 @@
 import NewsSummaryComponent from "@/components/NewsSummaryComponent";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { demoNews } from "../storage/demoNews";
 import { Colors } from "../storage/colorCodes";
+import { demoNews } from "../storage/demoNews";
 
 const NewsScreen = () => {
   const router = useRouter();
@@ -25,7 +32,7 @@ const NewsScreen = () => {
 
             {demoNews
               .filter((item) => {
-                const newsDate = new Date(item.date);
+                const newsDate = new Date(item.created_date);
                 const today = new Date();
 
                 return (
@@ -38,6 +45,10 @@ const NewsScreen = () => {
                 <NewsSummaryComponent key={item.id} item={item} />
               ))}
           </View>
+          <Button
+            title="Expiry Items"
+            onPress={() => router.push("/ExpiryScreen")}
+          />
         </ScrollView>
       </SafeAreaView>
     </View>

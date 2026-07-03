@@ -9,7 +9,7 @@ import { demoNews } from "../storage/demoNews";
 
 const NewsAndMemoScreen = () => {
   const router = useRouter();
-  const [timeLeft, setTimeLeft] = useState(1000); // 20 seconds countdown
+  const [timeLeft, setTimeLeft] = useState(1000);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,6 +17,7 @@ const NewsAndMemoScreen = () => {
         if (prevTime <= 1) {
           clearInterval(interval);
           router.back();
+
           return 0;
         }
         return prevTime - 1;
@@ -42,7 +43,7 @@ const NewsAndMemoScreen = () => {
                 justifyContent: "space-between",
               }}
             >
-              <Text style={styles.pageTitle}>News & Memos</Text>
+              <Text style={styles.pageTitle}>All News </Text>
 
               <Text>
                 Returning in:{" "}

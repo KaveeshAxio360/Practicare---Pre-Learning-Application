@@ -4,7 +4,8 @@ export const demoNews = [
     title: "New Pathology Referral Pathway - Effective",
     summary:
       "Following feedback from our pathology partner, all referrals should now use the updated electronic form. Paper referrals will no longer be",
-    date: "2026-06-28T09:14:00",
+    created_date: "2026-07-02T09:14:00",
+    published_date: "2026-07-02T09:14:00",
     featured: true,
     type: "Practise Memo",
     priority: "Mandatory",
@@ -22,7 +23,8 @@ Suspendisse ac turpis molestie justo venenatis ultrices. Curabitur ultricies sap
     title: "Cold & Flu Season Preparation - Stock Check Required",
     summary:
       "Pharmacy leads are requested to complete a full stock audit before 25 June to ensure adequate supplies for the upcoming cold and flu season",
-    date: "2026-06-28T14:45:00",
+    created_date: "2026-07-02T14:45:00",
+    published_date: "2026-07-02T14:45:00",
     featured: false,
     type: "Practice News",
     priority: "High",
@@ -37,7 +39,8 @@ Suspendisse ac turpis molestie justo venenatis ultrices. Curabitur ultricies sap
     title: "Practicare Platform Update: Version 4.2 Released",
     summary:
       "The latest update includes improvements to the Noticeboards feature, faster task completion workflows, and a redesigned compliance alerts",
-    date: "2026-06-28T11:02:00",
+    created_date: "2026-07-02T11:02:00",
+    published_date: "2026-07-02T11:02:00",
     featured: false,
     type: "Practice News",
     priority: "Normal",
@@ -52,7 +55,8 @@ Suspendisse ac turpis molestie justo venenatis ultrices. Curabitur ultricies sap
     title: "New Clinical Guidelines for Hypertension Management",
     summary:
       "A comprehensive update to the clinical guidelines for the management of hypertension, incorporating the latest research and best practices.",
-    date: "2026-06-25T10:30:00",
+    created_date: "2026-07-01T10:30:00",
+    published_date: "2026-07-01T10:30:00",
     featured: true,
     type: "Clinical Update",
     priority: "High",

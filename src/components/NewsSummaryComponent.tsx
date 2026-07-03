@@ -7,7 +7,8 @@ interface NewsSummaryComponentProps {
     id: string;
     title: string;
     summary: string;
-    date: string;
+    created_date: string;
+    published_date: string;
     featured: boolean;
     type: string;
     priority: string;
@@ -40,7 +41,7 @@ const NewsSummaryComponent = ({ item }: NewsSummaryComponentProps) => {
           <Text style={styles.newsTitle}>{item.title}</Text>
           <Text style={styles.newsSummary}>{item.summary}</Text>
           <Text style={styles.newsDate}>
-            {new Date(item.date).toLocaleDateString()}
+            {new Date(item.created_date).toLocaleDateString()}
           </Text>
         </View>
       </View>

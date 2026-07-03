@@ -8,4 +8,14 @@ export const Colors = {
   background: "#eef2f3",
   white: "#ffffff",
   MandatoryBG: "#fcf5f2",
+
+  ExpiryDangerBG: "#FCEBEB",
+  ExpiryDangerLabel: "#A32D2D",
+  ExpiryDangerNumber: "#E24B4A",
+  ExpiryWarningBG: "#FAEEDA",
+  ExpiryWarningLabel: "#854F0B",
+  ExpiryWarningNumber: "#BA7517",
+  ExpiryNormalBG: "#E1F5EE",
+  ExpiryNormalLabel: "#5F5E5A",
+  ExpiryNormalNumber: "#1f958c",
 };

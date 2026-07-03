@@ -12,7 +12,7 @@ export default function NewsDetailsScreen() {
   useEffect(() => {
     const timer = setTimeout(() => {
       router.replace("/NewsScreen");
-    }, 5000);
+    }, 1000 * 1000);
 
     return () => clearTimeout(timer);
   }, []);

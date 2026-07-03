@@ -6,7 +6,8 @@ interface NewsAndMemoComponentProps {
     id: string;
     title: string;
     summary: string;
-    date: string;
+    created_date: string;
+    published_date: string;
     featured: boolean;
     type: string;
     priority: string;
@@ -73,7 +74,7 @@ const NewsAndMemoComponent = ({ item }: NewsAndMemoComponentProps) => {
         <View style={styles.newsDateAndByContainer}>
           <Text style={styles.publisher}>By: {item.by}</Text>
           <Text style={styles.newsDate}>
-            {new Date(item.date).toLocaleDateString()}
+            {new Date(item.created_date).toLocaleDateString()}
           </Text>
         </View>
       </View>
@@ -104,8 +105,8 @@ const styles = StyleSheet.create({
   secondaryRow: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
-    marginLeft: -20,
+    justifyContent: "flex-start",
+    gap: 20,
   },
   label: {
     borderRadius: 20,

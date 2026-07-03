@@ -17,16 +17,16 @@ const WelcomeScreen = () => {
   const [password, setPassword] = React.useState("");
 
   const handleLogin = () => {
-    const hasCredentials =
-      email.trim().length > 0 || password.trim().length > 0;
+    // const hasCredentials =
+    //   email.trim().length > 0 || password.trim().length > 0;
 
-    if (!hasCredentials) {
-      Alert.alert(
-        "Missing details",
-        "Enter your email or password to continue.",
-      );
-      return;
-    }
+    // if (!hasCredentials) {
+    //   Alert.alert(
+    //     "Missing details",
+    //     "Enter your email or password to continue.",
+    //   );
+    //   return;
+    // }
 
     Alert.alert("Login successful", "You have been signed in.");
     clearForm();
