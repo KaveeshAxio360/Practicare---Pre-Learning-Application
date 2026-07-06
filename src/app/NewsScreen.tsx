@@ -10,8 +10,8 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Colors } from "../storage/colorCodes";
-import { demoNews } from "../storage/demoNews";
+import { Colors } from "../demoData/colorCodes";
+import demoNews from "../demoData/demoNews.json";
 
 const NewsScreen = () => {
   const router = useRouter();

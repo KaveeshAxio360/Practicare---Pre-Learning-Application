@@ -3,7 +3,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { demoNews } from "../../storage/demoNews";
+import demoNews from "../../demoData/demoNews.json";
 
 export default function NewsDetailsScreen() {
   const { id } = useLocalSearchParams();

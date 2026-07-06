@@ -4,8 +4,8 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Colors } from "../storage/colorCodes";
-import { demoNews } from "../storage/demoNews";
+import { Colors } from "../demoData/colorCodes";
+import demoNews from "../demoData/demoNews.json";
 
 const NewsAndMemoScreen = () => {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 // import { Ionicons } from '@expo/vector-icons';
-import { Colors } from "../storage/colorCodes";
+import { Colors } from "../demoData/colorCodes";
 
 type ExpiryRowProps = {
   expired: number;

@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Colors } from "../storage/colorCodes";
+import { Colors } from "../demoData/colorCodes";
 
 interface NewsSummaryComponentProps {
   item: {
@@ -10,9 +10,9 @@ interface NewsSummaryComponentProps {
     created_date: string;
     published_date: string;
     featured: boolean;
-    type: string;
-    priority: string;
-    category: string;
+    type: number;
+    priority: number;
+    category: number;
     by: string;
     detailedSummary: string;
   };

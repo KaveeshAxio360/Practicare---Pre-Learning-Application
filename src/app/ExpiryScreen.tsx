@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Colors } from "../storage/colorCodes";
+import { Colors } from "../demoData/colorCodes";
 
 const ExpiryScreen = () => {
   const router = useRouter();

@@ -1,6 +1,16 @@
+import {
+  NewsBackgroundColor,
+  NewsBorderColor,
+  NewsCategoryLabel,
+  NewsPriorityColor,
+  NewsPriorityLabel,
+  NewsTypeColor,
+  NewsTypeIcon,
+  NewsTypeLabel,
+} from "@/demoData/globalDataTypes";
+import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
-import { Colors } from "../storage/colorCodes";
-
+import { Colors } from "../demoData/colorCodes";
 interface NewsAndMemoComponentProps {
   item: {
     id: string;
@@ -9,9 +19,9 @@ interface NewsAndMemoComponentProps {
     created_date: string;
     published_date: string;
     featured: boolean;
-    type: string;
-    priority: string;
-    category: string;
+    type: number;
+    priority: number;
+    category: number;
     by: string;
     detailedSummary: string;
   };
@@ -24,55 +34,52 @@ const NewsAndMemoComponent = ({ item }: NewsAndMemoComponentProps) => {
       style={[
         styles.newsItem,
         {
-          backgroundColor:
-            item.priority === "Mandatory" ? Colors.MandatoryBG : Colors.white,
-        },
-        {
-          borderColor:
-            item.priority === "Mandatory"
-              ? Colors.danger
-              : item.priority === "High"
-                ? Colors.warning
-                : Colors.primary,
+          backgroundColor: NewsBackgroundColor[item.priority],
+          borderColor: NewsBorderColor[item.priority],
         },
       ]}
     >
       <View style={styles.itemTextBlock}>
-        <Text style={styles.newsTitle}>{item.title}</Text>
+        <View style={styles.titleRow}>
+          <FontAwesome
+            name={NewsTypeIcon[item.type]}
+            size={22}
+            color={Colors.primary}
+          />
+          <Text style={styles.newsTitle}>{item.title}</Text>
+        </View>
+
         <View style={styles.secondaryRow}>
           <Text
             style={[
               styles.label,
               {
-                backgroundColor:
-                  item.type === "Practise Memo"
-                    ? Colors.primary
-                    : Colors.secondary,
+                backgroundColor: NewsTypeColor[item.type],
               },
             ]}
           >
-            {item.type}
+            {NewsTypeLabel[item.type]}
           </Text>
+
           <Text
             style={[
               styles.label,
               {
-                backgroundColor:
-                  item.priority === "Mandatory"
-                    ? Colors.danger
-                    : item.priority === "High"
-                      ? Colors.warning
-                      : Colors.secondary,
+                backgroundColor: NewsPriorityColor[item.priority],
               },
             ]}
           >
-            {item.priority}
+            {NewsPriorityLabel[item.priority]}
           </Text>
-          <Text style={styles.label}>{item.category}</Text>
+
+          <Text style={styles.label}>{NewsCategoryLabel[item.category]}</Text>
         </View>
+
         <Text style={styles.newsSummary}>{item.detailedSummary}</Text>
+
         <View style={styles.newsDateAndByContainer}>
           <Text style={styles.publisher}>By: {item.by}</Text>
+
           <Text style={styles.newsDate}>
             {new Date(item.created_date).toLocaleDateString()}
           </Text>
@@ -101,6 +108,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "800",
     lineHeight: 23,
+  },
+  titleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    marginVertical: 10,
   },
   secondaryRow: {
     flexDirection: "row",
