@@ -9,7 +9,7 @@ import demoNews from "../demoData/demoNews.json";
 
 const NewsAndMemoScreen = () => {
   const router = useRouter();
-  const [timeLeft, setTimeLeft] = useState(1000);
+  const [timeLeft, setTimeLeft] = useState(10);
 
   useEffect(() => {
     const interval = setInterval(() => {

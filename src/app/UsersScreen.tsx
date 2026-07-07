@@ -1,30 +1,31 @@
 import UserCard from "@/components/UserCard";
-import api from "@/services/api";
-import { useEffect, useState } from "react";
-import { FlatList } from "react-native";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { fetchUsers } from "@/redux/users/usersThunks";
+import { useEffect } from "react";
+import { ActivityIndicator, FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
 export default function UsersScreen() {
-  const [users, setUsers] = useState<User[]>([]);
+  const dispatch = useAppDispatch();
+
+  const { users, loading } = useAppSelector((state) => state.users);
 
   useEffect(() => {
-    loadUsers();
+    dispatch(fetchUsers());
   }, []);
 
-  async function loadUsers() {
-    try {
-      const response = await api.get("/users");
-      console.log("Users response:", response.data);
-      setUsers(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+  if (loading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ActivityIndicator size="large" />
+      </View>
+    );
   }
 
   return (

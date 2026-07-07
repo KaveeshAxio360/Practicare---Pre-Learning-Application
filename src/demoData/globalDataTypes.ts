@@ -19,7 +19,7 @@ export const NewsCategory = {
   ADMINISTRATIVE: 3,
 } as const;
 
-/* ---------------- Labels ---------------- */
+// Labels
 
 export const NewsTypeLabel: Record<number, string> = {
   [NewsType.PRACTISE_MEMO]: "Practise Memo",
@@ -40,7 +40,7 @@ export const NewsCategoryLabel: Record<number, string> = {
   [NewsCategory.ADMINISTRATIVE]: "Administrative",
 };
 
-/* ---------------- Colors ---------------- */
+// Colors
 
 export const NewsTypeColor: Record<number, string> = {
   [NewsType.PRACTISE_MEMO]: Colors.primary,
@@ -67,7 +67,7 @@ export const NewsBackgroundColor: Record<number, string> = {
   [NewsPriority.NORMAL]: Colors.white,
 };
 
-/* ---------------- Icons ---------------- */
+// Icons
 
 export const NewsTypeIcon: any = {
   [NewsType.PRACTISE_MEMO]: "file-text",

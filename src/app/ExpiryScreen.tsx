@@ -24,6 +24,10 @@ const ExpiryScreen = () => {
             title="Users Page"
             onPress={() => router.push("/UsersScreen")}
           />
+          <Button
+            title="Pokemon Page"
+            onPress={() => router.push("/PokemonScreen")}
+          />
         </ScrollView>
       </SafeAreaView>
     </View>
